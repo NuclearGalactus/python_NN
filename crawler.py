@@ -3,14 +3,7 @@ from urllib.request import urlopen
 from urllib import parse
 from bs4 import BeautifulSoup
 
-
-class LinkParser(HTMLParser):
-    def handle_starttag(self, tag, attrs):
-        if tag == 'a':
-            for (key, value) in attrs:
-                if key == 'href':
-                    newUrl = parse.urljoin(self.baseUrl, value)
-                    self.links = self.links + [newUrl]
+class LinkParser(HTMLParser): 
     def getLinks(url):
         print("ASDL")
         links = []
@@ -25,39 +18,44 @@ class LinkParser(HTMLParser):
             for link in soup.find_all('a'):
                 print(link.get('href'))
                 newUrl = [parse.urljoin(self.baseUrl,link.get('href'))]
+                
                 links = links + newUrl 
             if '/title/' in url:
                 print("Movie Found: ", soup.html.title.string)
-
             return links
         else:
             return "",[]
 
-    def spider(url, word, maxPages):
+    def spider(url, maxPages):
+        f= open("movies.txt","w+")
         pagesToVisit = [url]
         numberVisited = 0
-        foundWord = False
-        while numberVisited < maxPages and pagesToVisit != [] and not foundWord:      
+        while numberVisited < maxPages and pagesToVisit != []:      
             url = pagesToVisit[numberVisited]
             numberVisited = numberVisited + 1
             print(numberVisited, "Visiting:", url) 
             links = []
             baseUrl = url
-            response = urlopen(url)
+            try:
+                response = urlopen(url)
+            except:
+                print("Bad URL")
+                continue
             if 'text/html' in response.getheader('Content-Type'):
                 htmlBytes = response.read()
                 soup = BeautifulSoup(htmlBytes,'lxml')
+                if '/title/' in url:
+                    f.write("Movie Found: " +  soup.html.title.string + "\n")
                 baseUrl = url
                 for link in soup.find_all('a'):
                     newUrl = parse.urljoin(baseUrl,link.get('href'))
-                    links = links + [newUrl] 
-                if '/title/' in url:
-                    print("Movie Found: ", soup.html.title.string)
-            for link in links:
-                if link not in pagesToVisit:
-                    pagesToVisit = pagesToVisit + [link]
-        if foundWord:
-            print("The word ", word, " was found at ", url)
-        else:
-            print("Finished")
-LinkParser.spider("https://www.imdb.com/","jeff", 2000)
+                    if '/offsite/' in newUrl:
+                        continue
+                    refpos = newUrl.find('?')
+                    #print(refpos)
+                    if refpos > -1:
+                        linkcat = newUrl[:refpos]
+                        if linkcat not in pagesToVisit:                        
+                            pagesToVisit = pagesToVisit + [linkcat]
+        print("Finished")
+LinkParser.spider("https://www.imdb.com/title/tt2231461/?ref_=fn_al_tt_1", 2000)
