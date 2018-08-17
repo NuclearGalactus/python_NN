@@ -15,27 +15,30 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js" ></script>
     <script type="text/javascript">
-      $(document).ready(function(){
-        $("#txt_name").keyup(function(){
-            alert($(this).val());
+      $(document).ready(function() {    
+        $("#searchbtn").bind('click', function(event) {
+          alert($("#mainsearch").val());
         });
-    })
-</script>
+      });
+    </script>
   </head>
   <body>
-    <h1>Hello, world!</h1>
     <div class="container-fluid">
-      <h1>My First Bootstrap Page</h1>
-      <p>This is some text.</p>
+      <div class="form-group">
+	<div class="col-xs-11">
+          <input type="search" class="form-control" id="mainsearch" placeholder="Search Programs">
+	</div>
+	<div class=".col-xs-1">
+	  <button type="button" class="btn btn-danger" id="searchbtn">Danger</button>
+	</div>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="mainsearch">Search:</label>
-      <input type="search" class="form-control" id="mainsearch">
-    </div>
+    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <!--<script src="js/bootstrap.min.js"></script>
+
   </body>
 
 
