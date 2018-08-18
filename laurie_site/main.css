@@ -1,0 +1,21 @@
+div {
+}
+
+body,html,.full-height {
+    height: 100%;
+}
+
+.highlight {
+    background-color: orange;
+}
+
+.panel {
+    background-color: orange;
+}
+
+.heading {
+    background-color: darkblue;
+    height: 15%;
+    display: flex;
+    flex-flow: row nowrap;
+}

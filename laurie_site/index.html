@@ -6,14 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Bootstrap 101 Template</title>
-
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js" ></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js" ></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.0.8/stitch.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {    
         $("#searchbtn").bind('click', function(event) {
@@ -21,15 +19,28 @@
         });
       });
     </script>
+    <script type"text/javascript" src="main.js")></script>
   </head>
   <body>
-    <div class="container-fluid">
-      <div class="form-group">
-	<div class="col-xs-11">
-          <input type="search" class="form-control" id="mainsearch" placeholder="Search Programs">
+    <div class="full-height">
+      <div class="row heading">
+         
+      </div>
+      <div class="row full-height">
+	<div class="col-lg-3 panel">
 	</div>
-	<div class=".col-xs-1">
-	  <button type="button" class="btn btn-danger" id="searchbtn">Danger</button>
+	<div class="col-lg-6">
+	  <div class="row">	
+	    <div class="col-lg-10">
+              <input type="search" class="form-control" id="mainsearch" placeholder="Search Programs">
+	    </div>
+	    <div class="col-lg-2">
+	      <button type="button" class="btn btn-danger" id="searchbtn">Search</button>
+	    </div>
+	  </div>
+        </div>
+	<div class="col-lg-3 panel">
+	 
 	</div>
       </div>
     </div>
